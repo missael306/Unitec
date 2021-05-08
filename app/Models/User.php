@@ -11,33 +11,47 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    //-----Propiedades en base de datos
+    protected $table = "usuarios";
+
+    protected $primaryKey = "id_usuario";
+
+    //----- Atributos visibles
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nombres',
+        'primer_apellido',
+        'segundo_apellido',
+        'fecha_nacimimiento',
+        'correo_electronico',
+        'contrasena',
+        'id_genero',
+        'id_estado_civil',
+        'id_grado_academico'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    //----- Atributos no visibles
     protected $hidden = [
-        'password',
-        'remember_token',
+        'contrasena',
+        'remember_token'
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //-----Metodos
+    public function GetGenero()
+    {
+        return $this->belongsTo('App\Genero','id_genero');
+    }
+
+    public function GetEstadoCivil()
+    {
+        return $this->belongsTo('App\EstadoCivil','id_estado_civil');
+    }
+
+    public function GetGradoAcademico()
+    {
+        return $this->belongsTo('App\GradoAcademico','id_grado_academico');
+    }
 }
