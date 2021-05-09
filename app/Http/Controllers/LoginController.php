@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models;
 
 
 class LoginController extends Controller
 {   
+    //-----Constructor
+    public function __construct(){
+        $this->middleware('guest',['only' => 'Index']);
+    }
+
+    //-----Metodos
     public function Index()
     {
         //catalogos
@@ -34,5 +41,25 @@ class LoginController extends Controller
 
             return response()->json(['facultades' => $facultades]);
         }
+    }
+
+    public function Autenticar(Request $request)
+    {
+        $credenciales = $this->validate(request(),[
+            'email' => 'email|required|string',
+            'password' => 'required|string'
+        ]);        
+        
+        if(Auth::attempt($credenciales)){
+            return redirect()->route('home');
+        }else{
+            return back()->withErrors(['login' => trans('auth.failed')])->withInput(request(['email']));
+        }
+    }
+
+    public function CerrarSesion(Request $request)
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

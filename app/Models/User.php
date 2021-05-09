@@ -22,8 +22,8 @@ class User extends Authenticatable
         'primer_apellido',
         'segundo_apellido',
         'fecha_nacimimiento',
-        'correo_electronico',
-        'contrasena',
+        'email',
+        'password',
         'id_genero',
         'id_estado_civil',
         'id_grado_academico'
@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     //----- Atributos no visibles
     protected $hidden = [
-        'contrasena',
+        'password',
         'remember_token'
     ];
 

@@ -30,8 +30,12 @@
                         <a href="index.html" class="navbar-brand brand"> Unitec </a>
                     </div>
                     <div id="navbar-collapse-02" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">                            
-                            <li class="propClone"><a href="/">Login</a></li>                                                                              
+                        <ul class="nav navbar-nav navbar-right">   
+                        @auth                         
+                            <li class="propClone"><a href="{{route('default')}}">Home</a></li>   
+                        @else
+                            <li class="propClone"><a href="{{route('home')}}">Login</a></li>   
+                        @endauth                                                                           
                         </ul>
                     </div>
                 </div>

@@ -18,11 +18,21 @@
         
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <form action="" id="contactform">
-                    <div class="form">
-                        <input type="text" name="email" placeholder="Email *" required="required">
-                        <input type="password" name="contrasena" placeholder="Contraseña *" required="required">
-                        <input type="submit" id="submit" class="clearfix btn" value="Iniciar">    
+                <form action="{{route('autenticar')}}" method="post" id="contactform">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        {!! $errors->first('login','<span class="help-block">:message</span>')!!}                        
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" placeholder="Email *"  required="required" value="{{old('email')}}">
+                        {!! $errors->first('email','<span class="help-block">:message</span>')!!}                        
+                    </div> 
+                    <div class="form-group">                        
+                        <input type="password" name="password" placeholder="Contraseña *" required="required">                                                
+                        {!! $errors->first('password','<span class="help-block">:message</span>')!!}                        
+                    </div> 
+                    <div class="form-group">                        
+                        <input type="submit" id="submit" class="clearfix btn" value="Iniciar">                            
                         <p class="text-center btn-crear-cuenta" data-toggle="modal" data-target="#mdlCrearCuenta" >Crear cuenta</p>                
                     </div>                
                 </form>            
