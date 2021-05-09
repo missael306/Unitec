@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//----- Default
+Route::get('/', [LoginController::class, 'Index']);
 
-Route::get('/', function () {
-    return view('login/login');
+//----- Login
+Route::prefix('login')->group(function () {
+
+    Route::get('/crear-cuenta', [LoginController::class, 'CrearCuenta']);
+
+    Route::get('/obtener-facultades', [LoginController::class, 'ObtenerFacultades']);
 });
+
+

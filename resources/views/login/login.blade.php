@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
 <!--Iniciar Sesion-->
 <section class="item content">
     <div class="container toparea">
@@ -23,11 +22,36 @@
                     <div class="form">
                         <input type="text" name="email" placeholder="Email *" required="required">
                         <input type="password" name="contrasena" placeholder="Contraseña *" required="required">
-                        <input type="submit" id="submit" class="clearfix btn" value="Iniciar">                    
+                        <input type="submit" id="submit" class="clearfix btn" value="Iniciar">    
+                        <p class="text-center btn-crear-cuenta" data-toggle="modal" data-target="#mdlCrearCuenta" >Crear cuenta</p>                
                     </div>                
                 </form>            
             </div>
         </div>
     </div>
 </section>
+
+<!--Modal Crear Cuenta-->
+<div class="modal fade" tabindex="-1" role="dialog" id="mdlCrearCuenta">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Crear Cuenta</h4>
+            </div>
+            <div class="modal-body">
+                @include('login/crear_cuenta')
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" form="frmCrearCuenta" id="btnRegistrarCuenta" class="btn btn-primary btn-sm">Crear cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('scripts')
+    <script src="{{asset('unitec/js/login/login.js')}}"></script>
 @endsection

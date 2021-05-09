@@ -27,4 +27,9 @@ class GradoAcademico extends Model
     {
         return $this->hasMany('App\User','id_usuario');
     }
+
+    public function GetFacultades()
+    {
+        return $this->hasMany('App\Facultad','id_facultad');
+    }
 }

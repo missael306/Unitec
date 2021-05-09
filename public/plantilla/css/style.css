@@ -787,3 +787,18 @@ ul, ol {
             color: #00bba7;
         }
 }
+
+/* Estilos adicionales */
+#section-content{
+    margin: 0 0 25px ;
+    padding: 5px;
+}
+
+.btn-crear-cuenta{    
+    cursor: pointer;
+}
+
+.btn-crear-cuenta:hover{
+    background-color: rgb(83, 83, 83);
+    color: white;
+}

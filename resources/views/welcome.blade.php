@@ -48,7 +48,7 @@
         </div>
     </header>
 
-    <section>
+    <section id="section-content">
         @yield('content')
     </section>
 
@@ -80,5 +80,8 @@
     <!--PLUGINS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
+    <!--Modulos JS -->
+    <script src="{{asset('unitec/js/comunes/comunes.js')}}"></script>
+    @yield('scripts')
 </body>
 </html>
