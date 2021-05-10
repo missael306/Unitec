@@ -18,6 +18,7 @@ class User extends Authenticatable
 
     //----- Atributos visibles
     protected $fillable = [
+        'id_usuario',
         'nombres',
         'primer_apellido',
         'segundo_apellido',
@@ -25,8 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'id_genero',
-        'id_estado_civil',
-        'id_grado_academico'
+        'id_estado_civil'
     ];
 
     //----- Atributos no visibles

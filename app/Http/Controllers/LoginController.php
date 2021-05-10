@@ -66,14 +66,23 @@ class LoginController extends Controller
     public function RegistrarUsuario(Request $request)
     {
         $message = "";
-        $inserto = false;
+        $inserto_usuario = false;
+        $inserto_grado_academico_suario = false;
         try{
             $user = new Models\User($request->all());
             $user->password = bcrypt($request->password);
-            $inserto = $user->save();
+            $inserto_usuario = $user->save();
+            $usuario_insertado =  Models\User::latest('id_usuario')->first();
+
+            $grado_academico_usuario = new Models\UsuarioGradoAcademico();
+            $grado_academico_usuario->id_usuario  = $usuario_insertado->id_usuario;
+            $grado_academico_usuario->id_grado_academico = $request->id_grado_academico;
+            $grado_academico_usuario->id_facultad = $request->id_facultad;
+            $inserto_grado_academico_suario = $grado_academico_usuario->save();
+
         }catch(Exception $exception){
             $message = $exception->getMessage();
         }        
-        return response()->json(['response' => $inserto, 'mensaje' => $message ]);
+        return response()->json(['insertoUsuario' => $inserto_usuario, 'insertoGradoAcademico' => $inserto_grado_academico_suario , 'mensaje' => $message ]);
     }
 }

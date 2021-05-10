@@ -50,7 +50,7 @@ Unitec.Login = (function () {
                     console.log(response)
                     formRegistrar[0].reset();
                     $("#mdlCrearCuenta").modal("hide");
-                    if(response.response){
+                    if(response.insertoUsuario && response.insertoGradoAcademico){
                         $.alert({
                             title: "Usuario registrado",
                             type: "green",
