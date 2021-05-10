@@ -54,7 +54,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" form="frmCrearCuenta" id="btnRegistrarCuenta" class="btn btn-primary btn-sm">Crear cuenta</button>
+                <button type="submit" form="frmRegistrar" class="btn btn-primary btn-sm">Crear cuenta</button>
             </div>
         </div>
     </div>

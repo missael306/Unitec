@@ -17,6 +17,8 @@ Route::prefix('login')->group(function () {
     Route::post('/autenticar', [LoginController::class, 'Autenticar'])->name('autenticar');
     
     Route::post('/logout', [LoginController::class, 'CerrarSesion'])->name('logout');
+    
+    Route::post('/registrar', [LoginController::class, 'RegistrarUsuario'])->name('registrar');
 });
 
 

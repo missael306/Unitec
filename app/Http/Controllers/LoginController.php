@@ -62,4 +62,18 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function RegistrarUsuario(Request $request)
+    {
+        $message = "";
+        $inserto = false;
+        try{
+            $user = new Models\User($request->all());
+            $user->password = bcrypt($request->password);
+            $inserto = $user->save();
+        }catch(Exception $exception){
+            $message = $exception->getMessage();
+        }        
+        return response()->json(['response' => $inserto, 'mensaje' => $message ]);
+    }
 }

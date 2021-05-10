@@ -7,6 +7,7 @@ Unitec.Login = (function () {
 
         this.Initialize = function () {
             obtenerFacultades();
+            registrarUsuario();
         };  
         
         let obtenerFacultades = function(){  
@@ -34,6 +35,43 @@ Unitec.Login = (function () {
                 });
             })
         } 
+
+        let registrarUsuario = function(){
+            $("#frmRegistrar").submit(function(event){
+                event.preventDefault();
+                let formRegistrar = $(this);
+                let ruta = formRegistrar.attr("action");
+                let model = formRegistrar.serialize();
+                $.ajax({
+                    url: ruta,
+                    data : model,
+                    type: 'POST'
+                }).done(function (response) {
+                    console.log(response)
+                    formRegistrar[0].reset();
+                    $("#mdlCrearCuenta").modal("hide");
+                    if(response.response){
+                        $.alert({
+                            title: "Usuario registrado",
+                            type: "green",
+                            content: "Por favor, inicia sesión"
+                        })
+                    }else{
+                        $.alert({
+                            title: "Ocurrio un error",
+                            type: "orange",
+                            content: "Intente más tarde"
+                        })
+                    }
+                }).fail(function( jqXHR, textStatus ){
+                    $.alert({
+                        title: "Ocurrio un error",
+                        type: "orange",
+                        content: jqXHR.responseJSON.message
+                    })
+                });
+            })
+        }
     };
 
     return new LoginLoad();

@@ -1,4 +1,5 @@
-<form action="" method="post" id="frmCrearCuenta">
+<form action="{{route('registrar')}}" method="post" id="frmRegistrar">
+    {{ csrf_field() }}
     <div class="row form-group">
         <div class="col-md-6">
             <label for="txtNombre">*Nombre(s):</label>
@@ -42,11 +43,11 @@
     <div class="row form-group">
         <div class="col-md-6">
             <label for="txtCorreoElectronico">*Correo electronico:</label>
-            <input class="form-control" type="email" name="correo_electronico" id="txtCorreoElectronico" required="required">                            
+            <input class="form-control" type="email" name="email" id="txtCorreoElectronico" required="required">                            
         </div>
         <div class="col-md-6">
             <label for="txtContrasena">*Contraseña:</label>
-            <input class="form-control" type="password" name="contrasena" id="txtContrasena" required="required">                            
+            <input class="form-control" type="password" name="password" id="txtContrasena" required="required">                            
         </div>
     </div>
     <hr/>
